@@ -10,7 +10,7 @@
 #include <stdexcept>
 #include <vector>
 
-#include <../sha3/sph_sha2.h>
+#include <sha3/sph_sha2.h>
 
 #include "eqcuda.hpp"
 #include "equihash.h" // equi_verify()
