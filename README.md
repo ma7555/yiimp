@@ -1,4 +1,10 @@
+[![Build Status](https://travis-ci.org/tpruvot/yiimp.svg?branch=next)](https://travis-ci.org/tpruvot/yiimp)
+
 #yiimp - yaamp fork
+
+WARNINGS
+- Use at your own risks.
+- Usage of this software requires abilities with sysadmin, database admin, coin daemons, and sometimes a bit of programming. Running a production pool can literally be more work than a full-time job.
 
 Required:
 
@@ -65,7 +71,7 @@ Add your exchange API public and secret keys in these two separated files:
 
 You can find sample config files in web/serverconfig.sample.php and web/keys.sample.php
 
-This web application includes some command line tools, add bin/ folder to your path and type "yiic" to list them, "yiic checkup" can help to test your initial setup.
+This web application includes some command line tools, add bin/ folder to your path and type "yiimp" to list them, "yiimp checkup" can help to test your initial setup.
 Future scripts and maybe the "cron" jobs will then use this yiic console interface.
 
 You need at least three backend shells (in screen) running these scripts:
@@ -123,4 +129,9 @@ Credits:
 
 Thanks to globalzon to have released the initial Yaamp source code.
 
+--
+
+You can support this project donating to tpruvot :
+
+BTC : 1Auhps1mHZQpoX4mCcVL8odU81VakZQ6dR
 
