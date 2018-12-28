@@ -176,7 +176,7 @@ function getAlgoColors($algo)
 		'x18'		=> '#f0b0a0',
 		'x22i'		=> '#f0a090',
 		'x21s'		=> '#f0a090',
-        'binarium-v1'    => '#f0f0f0',
+    		'binarium-v1'   => '#f0f0f0',
 		'xevan'		=> '#f0b0a0',
 		'allium'	=> '#80a0d0',
 		'argon2'	=> '#e0d0e0',
@@ -209,7 +209,7 @@ function getAlgoColors($algo)
 		'lyra2'		=> '#80a0f0',
 		'lyra2v2'	=> '#80c0f0',
 		'lyra2z'	=> '#80b0f0',
-        'lyra2vc0ban'    => '#80c0f0',
+	        'lyra2vc0ban'   => '#80c0f0',
 		'phi'		=> '#a0a0e0',
 		'phi2'		=> '#a0a0e0',
 		'pipe'		=> '#a0a0e0',		
@@ -271,7 +271,7 @@ function getAlgoPort($algo)
 		'x18'		=> 3738,
 		'x22i'		=> 3223,
 		'x21s'		=> 3224,
-        'binarium-v1' => 6666,
+	        'binarium-v1'	=> 6666,
 		'aergo'		=> 3691,
 		'xevan'		=> 3739,
 		'hmq1725'	=> 3747,
@@ -288,7 +288,7 @@ function getAlgoPort($algo)
 		'lyra2'		=> 4433,
 		'lyra2v2'	=> 4533,
 		'lyra2z'	=> 4553,
-        'lyra2vc0ban'    => 4563,
+     		'lyra2vc0ban'   => 4563,
 		'jha'		=> 4633,
 		'qubit'		=> 4733,
 		'zr5'		=> 4833,
@@ -401,10 +401,11 @@ function yaamp_profitability($coin)
 {
 	if(!$coin->difficulty) return 0;
 	
-	  if ($coin->algo == "equihash")
+		if ($coin->algo == "equihash") {
                         $btcmhd =  86400000 * $coin->price * $coin->reward / ($coin->difficulty * 8192);
-    else
-        $btcmhd = 20116.56761169 / $coin->difficulty * $coin->reward * $coin->price;
+		} else {
+        		$btcmhd = 20116.56761169 / $coin->difficulty * $coin->reward * $coin->price;
+		}
 	
 	if(!$coin->auxpow && $coin->rpcencoding == 'POW')
 	{
