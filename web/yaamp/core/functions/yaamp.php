@@ -18,7 +18,7 @@ function yaamp_get_algos()
 		'blakecoin',
 		'blake2s',
 		'blake2b',
-        'binarium-v1',
+    	 	'binarium-v1',
 		'decred',
 		'deep',
 		'dedal',		
@@ -36,7 +36,7 @@ function yaamp_get_algos()
 		'lyra2',
 		'lyra2v2',
 		'lyra2z',
-        'lyra2vc0ban',
+     		'lyra2vc0ban',
 		'neoscrypt',
 		'nist5',
 		'penta',
@@ -105,6 +105,7 @@ function yaamp_algo_mBTC_factor($algo)
 	case 'keccakc':
 	case 'lbry':
 	case 'vanilla':
+	case 'equihash':
 		return 1000;
 	default:
 		return 1;
@@ -399,8 +400,12 @@ function yaamp_hashrate_step()
 function yaamp_profitability($coin)
 {
 	if(!$coin->difficulty) return 0;
-
-	$btcmhd = 20116.56761169 / $coin->difficulty * $coin->reward * $coin->price;
+	
+	  if ($coin->algo == "equihash")
+                        $btcmhd =  86400000 * $coin->price * $coin->reward / ($coin->difficulty * 8192);
+    else
+        $btcmhd = 20116.56761169 / $coin->difficulty * $coin->reward * $coin->price;
+	
 	if(!$coin->auxpow && $coin->rpcencoding == 'POW')
 	{
 		$listaux = getdbolist('db_coins', "enable and visible and auto_ready and auxpow and algo='$coin->algo'");
