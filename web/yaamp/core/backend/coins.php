@@ -194,11 +194,22 @@ function BackendCoinsUpdate()
 
 			else if ($coin->symbol == 'ZEC' || $coin->rpcencoding == 'ZEC')
 			{
+				
 				$subsidy = $remote->getblocksubsidy();
-				if($subsidy)
+				
+				if($template && isset($template['coinbasetxn']) && $subsidy)
 				{
-					// no coinbasevalue in ZEC blocktemplate - using getblocksubsidy instead :/
+					// no coinbasevalue in ZEC blocktemplate, using getblocksubsidy instead :/
+					$txn = $template['coinbasetxn'];
 					$coin->reward = arraySafeVal($subsidy,'miner',0);
+					
+					if ($coin->symbol == 'ZEC') {
+						$coin->charity_amount = arraySafeVal($txn,'foundersreward',0)/100000000;
+					} 
+					else if ($coin->symbol == 'ZEN') {
+						$coin->charity_amount = arraySafeVal($txn,'communityfund',0)/100000000;
+					}			
+					//$coin->reward = $coin->charity_amount * 4 + arraySafeVal($txn,'fee',0)/100000000;
 					// getmininginfo show current diff, getinfo the last block one
 					$mininginfo = $remote->getmininginfo();
 					$coin->difficulty = ArraySafeVal($mininginfo,'difficulty',$coin->difficulty);
