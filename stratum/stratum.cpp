@@ -217,6 +217,8 @@ YAAMP_ALGO g_algos[] =
 	{"astralhash", astralhash_hash, 0x100, 0, 0},
 	{"jeonghash", jeonghash_hash, 0x100, 0, 0},
 	{"pawelhash", pawelhash_hash, 0x100, 0, 0},
+	{"padihash", padihash_hash, 0x100, 0, 0},
+	{"globalhash", globalhash_hash, 0x100, 0, 0},
 
 
 	{"", NULL, 0, 0},
