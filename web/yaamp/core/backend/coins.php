@@ -166,6 +166,10 @@ function BackendCoinsUpdate()
 					$target = decode_compact($template['bits']);
 					$coin->difficulty = target_to_diff($target);
 				}
+				if ($coin->symbol == 'BTG') {
+					$mininginfo = $remote->getmininginfo();
+					$coin->difficulty = ArraySafeVal($mininginfo,'difficulty', $coin->difficulty);
+				}
 			}
 
 			else if ($coin->rpcencoding == 'GETH' || $coin->rpcencoding == 'NIRO')
